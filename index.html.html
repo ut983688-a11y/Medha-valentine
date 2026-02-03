@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ayushi ❤️ Valentine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      overflow: hidden;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+      width: 90%;
+      max-width: 420px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .buttons {
+      position: relative;
+      height: 130px;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    #yesBtn {
+      background: #ff2e63;
+      color: white;
+    }
+
+    #noBtn {
+      background: #ddd;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 16px;
+      color: #222;
+    }
+
+    .heart {
+      position: fixed;
+      font-size: 22px;
+      animation: floatUp 3s linear forwards;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Ayushi 💖<br>Will you be my Valentine?</h1>
+
+    <div class="buttons">
+      <button id="yesBtn">YES ❤️</button>
+      <button id="noBtn">NO 🙈</button>
+    </div>
+
+    <div class="message" id="message">
+      <h2>YAYYYY!! 🥰</h2>
+      <p>
+        Ayushi, tumne YES bol diya ❤️  
+        <br><br>
+        Ab rules dhyaan se padh lo 😌  
+        <br><br>
+        ✔ Unlimited hugs & cuddles 🤗  
+        <br>✔ Lifetime bad jokes sunna padega 😆  
+        <br>✔ Meri plate se fries churaana allowed 🍟  
+        <br>✔ Mera dil sirf tumhara 💍  
+        <br><br>
+        Happy Valentine’s, meri jaan ❤️
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
+
+    function moveNoButton() {
+      const x = Math.random() * 260 - 130;
+      const y = Math.random() * 90;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    yesBtn.addEventListener("click", () => {
+      message.style.display = "block";
+      launchHearts();
+    });
+
+    function launchHearts() {
+      for (let i = 0; i < 35; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "0px";
+        heart.style.animationDuration = 2 + Math.random() * 2 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+      }
+    }
+  </script>
+
+</body>
+</html>
